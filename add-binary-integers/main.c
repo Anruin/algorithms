@@ -29,13 +29,16 @@ void add_binary_integers(const int *A, const int *B, int length, int *C) {
 	//       carry = 0
 	// C[0] = carry
 
+	// Initialize C to 0.
 	for (int i = 0; i < length; i++) {
 		C[i] = 0;
 	}
 
 	int carry = 0;
 
+	// Add the bits.
 	for (int i = length - 1; i >= 0; i--) {
+		// Use modulo 2 to get the least significant bit and use i+1 to get the correct index (leave the first index for the carry).
 		C[i + 1] = (A[i] + B[i] + carry) % 2;
 		if (A[i] + B[i] + carry > 1) {
 			carry = 1;
@@ -44,6 +47,7 @@ void add_binary_integers(const int *A, const int *B, int length, int *C) {
 		}
 	}
 
+	// Set the first index to the carry.
 	C[0] = carry;
 }
 
@@ -53,14 +57,17 @@ int main() {
 	// int A[] = {1, 1, 1, 1};
 	// int B[] = {1, 1, 1, 1};
 	// int C[5]; // +1 for carry
+	// expected = 15 + 15;
 
 	// int A[] = {1, 1, 1, 1, 1, 1, 1, 1};
 	// int B[] = {1, 1, 1, 1, 1, 1, 1, 1};
 	// int C[9]; // +1 for carry
+	// expected = 511 + 511;
 
 	int A[] = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
 	int B[] = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
 	int C[17]; // +1 for carry
+	int expected = 65535 + 65535;
 
 	// Number of elements in the array.
 	int length = sizeof(A) / sizeof(int);
@@ -77,6 +84,12 @@ int main() {
 		acc += C[i] * (1 << (length - i));
 	}
 	printf_s("\nResult (dec): %d", acc);
+
+	if (acc == expected) {
+		printf_s("\nResult (dec) is correct!");
+	} else {
+		printf_s("\nResult (dec) is incorrect!");
+	}
 
 	return 0;
 }
