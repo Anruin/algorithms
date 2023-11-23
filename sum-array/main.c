@@ -13,8 +13,7 @@
  * @details Maintenance: Each iteration of the for loop adds the element arr[cur] to the sum variable.
  * @details Termination: The sum variable contains the sum of all elements of the array.
  */
-int sum_array(const int arr[], int length) {
-
+int sum_array(const int arr[], const int length) {
 	// SUM-ARRAY(A,n):
 	// sum = 0
 	// for i = 0 to A.length - 1
@@ -32,12 +31,12 @@ int sum_array(const int arr[], int length) {
 
 int main() {
 	// The array to be summed.
-	int A[] = {5, 2, 15, 13, 4, 6, 1, 3, 9, 12, 11};
+	const int A[] = {5, 2, 15, 13, 4, 6, 1, 3, 9, 12, 11};
 
 	// Number of elements in the array.
-	int lengthOfA = sizeof(A) / sizeof(int);
+	constexpr int lengthOfA = sizeof(A) / sizeof(int);
 
-	int sum = sum_array(A, lengthOfA);
+	const int sum = sum_array(A, lengthOfA);
 
 	printf_s("\nSum: %d", sum);
 

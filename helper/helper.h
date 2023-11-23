@@ -13,7 +13,7 @@
  * @param k The number of elements to be printed. If k is less than 0, all elements are printed.
  * @param msg The message to be printed before the array.
  */
-void print_arr(int A[], int length, int k, char *msg) {
+static void print_arr(int A[], const int length, const int k, char* msg) {
 	printf_s("\n%s: ", msg);
 	for (int i = 0; i < length; i++) {
 		if (i < k || k < 0) {

@@ -4,6 +4,7 @@
  * @brief Searches for a given value in an array.
  * @param arr The array to use for searching.
  * @param length The number of elements in the array.
+ * @param v The value to search for.
  * @return The index of the first occurrence of the value in the array or -1 if the value is not found.
  * @details Time Complexity: O(n)
  * @details Input: arr sequence of n numbers arr = {a1, a2, ..., an} and a value v.
@@ -13,8 +14,7 @@
  * @details Maintenance: Each iteration of the loop checks if the current element is equal to v. If it is, the index is returned.
  * @details Termination: The loop terminates when cur == length. If the loop terminates, there is no index k < cur such that arr[k] == v.
  */
-int linear_search(const int arr[], int length, int v) {
-
+int linear_search(const int arr[], const int length, const int v) {
 	// LINEAR-SEARCH(A,n,v):
 	// for i = 0 to A.length - 1
 	//   if A[i] == v
@@ -32,15 +32,15 @@ int linear_search(const int arr[], int length, int v) {
 
 int main() {
 	// The array to use.
-	int A[] = {5, 2, 15, 13, 4, 6, 1, 3, 9, 12, 11};
+	const int A[] = {5, 2, 15, 13, 4, 6, 1, 3, 9, 12, 11};
 
 	// Number of elements in the array.
-	int lengthOfA = sizeof(A) / sizeof(int);
+	constexpr int lengthOfA = sizeof(A) / sizeof(int);
 
-	int indexExisting = linear_search(A, lengthOfA, 9);
+	const int indexExisting = linear_search(A, lengthOfA, 9);
 	printf_s("\nIndex of 9: %d", indexExisting);
 
-	int indexNonExisting = linear_search(A, lengthOfA, 99);
+	const int indexNonExisting = linear_search(A, lengthOfA, 99);
 	printf_s("\nIndex of 99: %d", indexNonExisting);
 
 	return 0;

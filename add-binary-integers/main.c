@@ -15,8 +15,7 @@
  * @details Maintenance: Each iteration of the loop adds the i-th least significant bits of the two n-bit binary integers A[0..n-1] and B[0..n-1] and stores the result in C[i]. The carry is stored in carry.
  * @details Termination: The loop terminates when i == length. If the loop terminates, the array C[0..i] contains the i least significant bits of the sum of the two n-bit binary integers A[0..n-1] and B[0..n-1].
  */
-void add_binary_integers(const int *A, const int *B, int length, int *C) {
-
+void add_binary_integers(const int* A, const int* B, const int length, int* C) {
 	// ADD-BINARY-INTEGERS(A,B,n):
 	// for i = 0 to n - 1
 	//   C[i] = 0
@@ -73,10 +72,10 @@ int main() {
 	int A[] = {1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1};
 	int B[] = {1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0};
 	int C[17]; // +1 for carry
-	int expected = 0b1001001001001001 + 0b1010101010101010;
+	constexpr int expected = 0b1001001001001001 + 0b1010101010101010;
 
 	// Number of elements in the array.
-	int length = sizeof(A) / sizeof(int);
+	constexpr int length = sizeof(A) / sizeof(int);
 
 	print_arr(A, length, -1, "A  ");
 	print_arr(B, length, -1, "B  ");
@@ -87,7 +86,7 @@ int main() {
 
 	int acc = 0;
 	for (int i = 0; i < length + 1; i++) {
-		acc += C[i] * (1 << (length - i));
+		acc += C[i] * (1 << length - i);
 	}
 	printf_s("\nResult (dec): %d", acc);
 

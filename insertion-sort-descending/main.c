@@ -13,8 +13,7 @@
  * @details Maintenance: Each iteration of the for loop expands the subarray arr[0..j-1] by inserting the correct element into its proper place.
  * @details Termination: The subarray arr[0..j-1] is the entire descending sorted array arr.
  */
-void insertion_sort_descending(int arr[], int length) {
-
+void insertion_sort_descending(int arr[], const int length) {
 	// INSERTION-SORT-DESCENDING(A,n):
 	// for j = 1 to A.length - 1
 	//    key = A[j]
@@ -30,7 +29,7 @@ void insertion_sort_descending(int arr[], int length) {
 		print_arr(arr, length, j, msg);
 
 		// The key to be inserted into the sorted sequence arr[0..j-1].
-		int key = arr[j];
+		const int key = arr[j];
 
 		// Index of the previous element in the sorted sequence arr[0..j-1].
 		int i = j - 1;
@@ -50,7 +49,7 @@ int main() {
 	int A[] = {5, 2, 7, 8, 4, 6, 1, 3, 9, 11, 10};
 
 	// Number of elements in the array.
-	int lengthOfA = sizeof(A) / sizeof(int);
+	constexpr int lengthOfA = sizeof(A) / sizeof(int);
 
 	// Before sorting.
 	print_arr(A, lengthOfA, -1, "Input");
