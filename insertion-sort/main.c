@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "../helper/helper.h"
+#include "helper.h"
 
 /**
  * @brief Insertion Sort algorithm implementation. Sorts an array of integers in ascending order.
@@ -44,7 +44,7 @@ void insertion_sort(int arr[], const int length) {
 	}
 }
 
-int main() {
+int main(int argc, char* argv[]) {
 	// The array to be sorted.
 	int A[] = {5, 2, 15, 13, 4, 6, 1, 3, 9, 12, 11};
 
