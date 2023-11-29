@@ -8,10 +8,6 @@
  * @details Time Complexity: O(n*log(n))
  * @details Input: arr sequence of n numbers arr = {a1, a2, ..., an}.
  * @details Output: arr permutation (reordering) arr' of the input sequence such that arr' is sorted (a1' <= a2' <= ... <= an').
- * @details Loop Invariant: At the start of each iteration of the for loop, the subarray A[p:k-1] contains the sorted elements from the merged subarrays L and R.
- * @details Initialization: Before the loop i=j=0 and k=p, so the subarray A[p:k-1] is empty and trivially sorted.
- * @details Maintenance: The loop invariant holds before and after each iteration of the loop as the smallest element of the two subarrays is copied into the merged subarray.
- * @details Termination: The loop terminates when either i >= nL or j >= nR. In either case, all elements of one of the subarrays have been copied into the merged subarray, and the remaining elements of the other subarray are greater than all elements in the merged subarray. Therefore, the merged subarray is sorted.
  */
 void merge(int* arr, int p, int q, int r) {
 	//  1 nL = q - p + 1       // length of A[p:q]
@@ -71,6 +67,10 @@ void merge(int* arr, int p, int q, int r) {
 	int k = p;
 
 	// As long as there are elements in both subarrays, copy the smallest element into the merged array.
+	// Loop Invariant: At the start of each iteration of the for loop, the subarray A[p:k-1] contains the sorted elements from the merged subarrays L and R.
+	// Initialization: Before the loop i=j=0 and k=p, so the subarray A[p:k-1] is empty and trivially sorted.
+	// Maintenance: The loop invariant holds before and after each iteration of the loop as the smallest element of the two subarrays is copied into the merged subarray.
+	// Termination: The loop terminates when either i >= nL or j >= nR. In either case, all elements of one of the subarrays have been copied into the merged subarray, and the remaining elements of the other subarray are greater than all elements in the merged subarray. Therefore, the merged subarray is sorted.
 	while (i < leftLen && j < rightLen) {
 		if (left[i] <= right[j]) {
 			// If the smallest remaining element in the left subarray is smaller than the smallest remaining element in the right subarray, copy the smallest remaining element in the left subarray into the merged array.
