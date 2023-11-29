@@ -5,8 +5,43 @@
  * @param p The index of the first element of the left subarray.
  * @param q The index of the last element of the left subarray.
  * @param r The index of the last element of the right subarray.
+ * @details Time Complexity: O(n*log(n))
+ * @details Input: arr sequence of n numbers arr = {a1, a2, ..., an}.
+ * @details Output: arr permutation (reordering) arr' of the input sequence such that arr' is sorted (a1' <= a2' <= ... <= an').
+ * @details Loop Invariant: At the start of each iteration of the for loop, the subarray A[p:k-1] contains the sorted elements from the merged subarrays L and R.
+ * @details Initialization: Before the loop i=j=0 and k=p, so the subarray A[p:k-1] is empty and trivially sorted.
+ * @details Maintenance: The loop invariant holds before and after each iteration of the loop as the smallest element of the two subarrays is copied into the merged subarray.
+ * @details Termination: The loop terminates when either i >= nL or j >= nR. In either case, all elements of one of the subarrays have been copied into the merged subarray, and the remaining elements of the other subarray are greater than all elements in the merged subarray. Therefore, the merged subarray is sorted.
  */
 void merge(int* arr, int p, int q, int r) {
+	//  1 nL = q - p + 1       // length of A[p:q]
+	//  2 nR = r - q           // length of A[q+1:r]
+	//  3 let L[0:nL-1] and R[0:nR-1]
+	//  4 for i = 0 to nL - 1  // copy A[p:q] to L[0:nL-1]
+	//  5   L[i] = A[p+i]
+	//  6 for j = 0 to nR - 1  // copy A[q+1:r] to R[0:nR-1]
+	//  7   R[j] = A[q+j+1]
+	//  8 i = 0                // i is an index of the smallest remaining element in L
+	//  9 j = 0                // j is an index of the smallest remaining element in R
+	// 10 k = p                // k is an index of the location in A to fill
+	// 11 // While each of the arrays L and R have an unmerged element, copy the smallest unmerged element back into A[p:r].
+	// 12 while i < nL and j < nR
+	// 13   if L[i] <= R[j]
+	// 14     A[k] = L[i]
+	// 15     i = i + 1
+	// 16   else A[k] = R[j]
+	// 17     j = j + 1
+	// 18   k = k + 1
+	// 19 // When we went through one of L or R entirely, copy the remainder of the other to the end of A[p:r].
+	// 20 while i < nL
+	// 21   A[k] = L[i]
+	// 22   i = i + 1
+	// 23   k = k + 1
+	// 24 while j < nR
+	// 25   A[k] = R[j]
+	// 26   j = j + 1
+	// 27   k = k + 1
+
 	// Length of the left subarray.
 	const int leftLen = q - p + 1;
 
